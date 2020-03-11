@@ -1,0 +1,38 @@
+#The commonly used API
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+%matplotlib inline
+import numpy as np
+import sklearn
+import pandas as pd 
+import os
+import sys
+import time
+import tensorflow as tf
+from tensorflow import keras
+
+print(tf.__version__)
+print(sys.version_info)
+for module in mpl, np, pd, sklearn, tf, keras:
+    print(module.__name__,module.__version__)
+
+#begin
+
+datagen = keras.preprocessing.image.ImageDataGenerator(
+        rotation_range=40,
+        width_shift_range=0.2,
+        height_shift_range=0.2,
+        shear_range=0.2,
+        zoom_range=0.2,
+        horizontal_flip=True,
+        fill_mode='nearest')
+
+file_path = path   #The path must be the upper path of file
+target_size = target_size   #(128,128)
+batch_szie = batche_size  #number of files
+new_path = new_path  #new folder
+
+gen = datagen.flow_from_directory(file_path, target_size=target_size, batch_size=batch_size, save_to_dir=(new_path))
+for i in range(num):   #images = num * batch_size
+    gen.next()
